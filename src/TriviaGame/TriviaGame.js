@@ -5,7 +5,7 @@ const TriviaGame = () => {
     <div className={styles.TriviaGame}>
       <header className={styles.header}>
         <p>
-          Hello trivia game
+         trivia game
         </p>
       </header>
     </div>
