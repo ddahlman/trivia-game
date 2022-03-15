@@ -1,14 +1,14 @@
-.TriviaGame {
-  text-align: center;
+.container {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px 1fr 100px;
+  background-color: #9a28ab;
+  justify-items: center;
 }
 
 .header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  grid-row: 1;
   font-size: calc(10px + 2vmin);
   color: white;
 }
