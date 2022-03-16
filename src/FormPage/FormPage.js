@@ -1,15 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LabeledSelect } from "./LabeledSelect/LabeledSelect";
 import { deduplicateOptions, getOptions } from "../utils/utils";
 import { InputRange } from "./InputRange/InputRange";
 
 const FormPage = ({ data }) => {
-  const [doStartQuiz, setDoStartQuiz] = useState(false);
-  const [rangeValue, setRangeValue] = useState(1);
+  const [questionList, setQuestionList] = useState(null);
+  const [nrOfQuestions, setNrOfQuestions] = useState(0);
   const [value, setValue] = useState({
     category: "",
     difficulty: "",
   });
+  const [validationText, setValidationText] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,8 +18,25 @@ const FormPage = ({ data }) => {
   };
 
   const handleRange = (e) => {
-    setRangeValue(e.target.value);
+    setValidationText("");
+    setNrOfQuestions(e.target.value);
   };
+
+  useEffect(() => {
+    if (value.category && value.difficulty) {
+      const matchedOptions = data.results.filter((obj) => {
+        return (
+          obj.category === value.category && obj.difficulty === value.difficulty
+        );
+      });
+      console.log("matchedOptions: ", matchedOptions);
+      const nr = matchedOptions.length;
+      const text = `There ${nr === 1 ? "is" : "are"} ${nr} question${
+        nr === 1 ? "" : "s"
+      } that matches your criteria`;
+      setValidationText(text);
+    }
+  }, [value.category, value.difficulty]);
 
   const handleSelect = (e) => {
     setValue((value) => ({
@@ -29,7 +47,7 @@ const FormPage = ({ data }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <InputRange value={rangeValue} onChange={handleRange} />
+      <InputRange value={nrOfQuestions} onChange={handleRange} />
       <LabeledSelect
         name={"category"}
         label={"Category"}
@@ -42,8 +60,13 @@ const FormPage = ({ data }) => {
         label={"Difficulty"}
         value={value.difficulty}
         onChange={handleSelect}
-        options={deduplicateOptions(getOptions(data?.results, "difficulty"))}
+        options={[
+          { label: "easy", value: "easy" },
+          { label: "medium", value: "medium" },
+          { label: "hard", value: "hard" },
+        ]}
       />
+      <section>{validationText && <h2>{validationText}</h2>}</section>
       <button>Create Quiz</button>
     </form>
   );

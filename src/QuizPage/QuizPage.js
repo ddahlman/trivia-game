@@ -1,5 +1,9 @@
 const QuizPage = () => {
-  return <section>QuizPage</section>;
+  return (
+    <section>
+      <h1>QuizPage</h1>
+    </section>
+  );
 };
 
 export { QuizPage };
