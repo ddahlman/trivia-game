@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FormPage } from "../FormPage/FormPage";
+import { StartPage } from "../StartPage/StartPage";
 import styles from "./TriviaGame.module.css";
 
 const TriviaGame = () => {
@@ -33,7 +33,7 @@ const TriviaGame = () => {
       {loading ? (
         <h1>Loading...</h1>
       ) : triviaResponse ? (
-        <FormPage data={triviaResponse} />
+        <StartPage data={triviaResponse} />
       ) : (
         <h1>Sorry, couldn't load game due to technical difficulties...</h1>
       )}
