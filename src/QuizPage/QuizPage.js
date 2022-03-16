@@ -7,6 +7,7 @@ const QuizPage = ({ data }) => {
   const [points, setPoints] = useState(0);
   const [showResults, setShowResults] = useState(false);
   const [reset, setReset] = useState(false);
+  const [userChoiceDisabled, setUserChoiceDisabled] = useState(false);
 
   const shuffleAnswers = (arr) =>
     arr
@@ -25,6 +26,7 @@ const QuizPage = ({ data }) => {
     if (quiz[questionNumber].correctAnswer === e.target.dataset.answer) {
       setPoints((points) => points + 1);
     }
+    setUserChoiceDisabled(true);
   };
 
   const handleNextQuestion = () => {
@@ -33,11 +35,13 @@ const QuizPage = ({ data }) => {
     } else {
       setQuestionNumber((questionNumber) => questionNumber + 1);
     }
+    setUserChoiceDisabled(false);
   };
 
   const handleReset = () => {
     setReset(true);
   };
+
   if (reset) {
     return <TriviaGame />;
   }
@@ -64,6 +68,7 @@ const QuizPage = ({ data }) => {
                 key={answer}
                 answer={answer}
                 onClick={handleUserChoice}
+                disabled={userChoiceDisabled}
               />
             ))}
             <p>Points: {`${points} / ${data.length}`}</p>

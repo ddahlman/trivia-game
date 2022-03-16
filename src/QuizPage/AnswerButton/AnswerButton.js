@@ -1,6 +1,6 @@
-const AnswerButton = ({ answer, onClick }) => {
+const AnswerButton = ({ answer, onClick, disabled }) => {
   return (
-    <button data-answer={answer} onClick={onClick}>
+    <button disabled={disabled} data-answer={answer} onClick={onClick}>
       {answer}
     </button>
   );
