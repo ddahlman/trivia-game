@@ -1,0 +1,15 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: max-content;
+  gap: 5px;
+}
+
+.button {
+  padding: 10px;
+  background-color: #444;
+  color: #fff;
+  border-radius: 3px;
+  border: none;
+  font: inherit;
+}

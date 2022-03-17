@@ -1,0 +1,20 @@
+.button {
+  padding: 5px;
+  background-color: #444;
+  color: #fff;
+  border-radius: 3px;
+  border: none;
+  font: inherit;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+}
+
+.button:active {
+  border: 2px solid #fff;
+}
+
+.buttonCorrectAnswer {
+  background-color: #7aec7a;
+}

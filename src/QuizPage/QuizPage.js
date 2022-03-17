@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import TriviaGame from "../TriviaGame/TriviaGame";
 import { AnswerButton } from "./AnswerButton/AnswerButton";
+import styles from "./QuizPage.module.css";
 
 const QuizPage = ({ data }) => {
   const [questionNumber, setQuestionNumber] = useState(0);
@@ -15,11 +16,15 @@ const QuizPage = ({ data }) => {
       .sort((a, b) => a.sort - b.sort)
       .map(({ answer }) => answer);
 
-  const quiz = data.map((obj) => ({
-    question: obj.question,
-    answers: shuffleAnswers([...obj.incorrect_answers, obj.correct_answer]),
-    correctAnswer: obj.correct_answer,
-  }));
+  const quiz = useMemo(
+    () =>
+      data.map((obj) => ({
+        question: obj.question,
+        answers: shuffleAnswers([...obj.incorrect_answers, obj.correct_answer]),
+        correctAnswer: obj.correct_answer,
+      })),
+    [data]
+  );
 
   const handleUserChoice = (e) => {
     console.log("e.target.dataset.answer: ", e.target.dataset.answer);
@@ -54,7 +59,7 @@ const QuizPage = ({ data }) => {
     );
   } else {
     return (
-      <section>
+      <section className={styles.container}>
         <h1>Quiz Page</h1>
         {data ? (
           <>
@@ -73,7 +78,9 @@ const QuizPage = ({ data }) => {
             ))}
             <p>Points: {`${points} / ${data.length}`}</p>
             <p>Progress: {`${questionNumber + 1} / ${data.length}`}</p>
-            <button onClick={handleNextQuestion}>Next Question</button>
+            <button className={styles.button} onClick={handleNextQuestion}>
+              Next Question
+            </button>
           </>
         ) : (
           <h1>Technical Error, try reloading the page</h1>
