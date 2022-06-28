@@ -1,25 +1,30 @@
 import { useState } from "react";
+import { useFetch } from "../customHooks/useFetch";
 import { FormPage } from "../FormPage/FormPage";
 import { QuizPage } from "../QuizPage/QuizPage";
 import styles from "./StartPage.module.css";
 
-const StartPage = ({ data }) => {
-  const [quickGame, setQuickGame] = useState(false);
+const StartPage = () => {
   const [customizeGame, setCustomizeGame] = useState(false);
+  const [quickGameData, setQuickGameData] = useFetch(
+    "https://opentdb.com/api.php?amount=10"
+  );
+  // const [customGameData, setCustomGameData] = useFetch("https://opentdb.com/api.php?amount=10");
 
   const handleQuickGame = () => {
-    setQuickGame(true);
+    setQuickGameData();
     setCustomizeGame(false);
   };
 
   const handleCustomizeGame = () => {
     setCustomizeGame(true);
-    setQuickGame(false);
   };
+
+  console.log("quickGameData: ", quickGameData);
 
   return (
     <section className={styles.container}>
-      {!quickGame && !customizeGame && (
+      {!!quickGameData && !customizeGame && (
         <>
           <button className={styles.button} onClick={handleQuickGame}>
             Quick Game
@@ -30,8 +35,10 @@ const StartPage = ({ data }) => {
         </>
       )}
 
-      {quickGame && !customizeGame && <QuizPage data={data.results} />}
-      {customizeGame && !quickGame && <FormPage data={data.results} />}
+      {quickGameData && !customizeGame && (
+        <QuizPage data={quickGameData.results} />
+      )}
+      {customizeGame && !!quickGameData && <FormPage />}
     </section>
   );
 };
