@@ -16,10 +16,10 @@ const useFetch = (url) => {
 
   const get = async () => {
     const response = await fetch(url);
-    const data = response.json();
+    const data = await response.json();
     setData(data);
   };
-
+console.log(data);
   return [data, get];
 };
 

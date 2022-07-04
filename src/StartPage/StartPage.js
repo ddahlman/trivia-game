@@ -13,14 +13,13 @@ const StartPage = () => {
 
   const handleQuickGame = () => {
     setQuickGameData();
-    setCustomizeGame(false);
   };
 
   const handleCustomizeGame = () => {
     setCustomizeGame(true);
   };
 
-  console.log("quickGameData: ", quickGameData);
+  // console.log("quickGameData: ", quickGameData);
 
   return (
     <section className={styles.container}>
