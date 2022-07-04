@@ -24,7 +24,7 @@ const StartPage = () => {
 
   return (
     <section className={styles.container}>
-      {!!quickGameData && !customizeGame && (
+      {!quickGameData && !customizeGame && (
         <>
           <button className={styles.button} onClick={handleQuickGame}>
             Quick Game
