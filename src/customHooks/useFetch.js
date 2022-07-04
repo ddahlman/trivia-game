@@ -1,8 +1,28 @@
 import { useEffect } from "react";
-import { useState } from "react";
+
+const initialState = {
+  data: null,
+  isLoading: false,
+};
+
+const actionType = {
+  DATA: "DATA",
+  IS_LOADING: "IS_LOADING",
+};
+
+const reducer = (action, state) => {
+  switch (action.type) {
+    case actionType.DATA:
+      return { ...state, data: action.payload };
+    case actionType.IS_LOADING:
+      return { ...state, isLoading: action.payload };
+    default:
+      return state;
+  }
+};
 
 const useFetch = (url) => {
-  const [data, setData] = useState(null);
+  const [state, dispatch] = useReducer(reducer, initialState);
   let isMounted = true;
 
   const cleanup = () => {
@@ -19,7 +39,7 @@ const useFetch = (url) => {
     const data = await response.json();
     setData(data);
   };
-console.log(data);
+  console.log(data);
   return [data, get];
 };
 

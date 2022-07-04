@@ -22,23 +22,23 @@ const StartPage = () => {
   // console.log("quickGameData: ", quickGameData);
 
   return (
-    <section className={styles.container}>
+    <>
       {!quickGameData && !customizeGame && (
-        <>
+        <section className={styles.container}>
           <button className={styles.button} onClick={handleQuickGame}>
             Quick Game
           </button>
           <button className={styles.button} onClick={handleCustomizeGame}>
             Customize Game
           </button>
-        </>
+        </section>
       )}
 
       {quickGameData && !customizeGame && (
         <QuizPage data={quickGameData.results} />
       )}
       {customizeGame && !!quickGameData && <FormPage />}
-    </section>
+    </>
   );
 };
 
