@@ -6,13 +6,14 @@ import styles from "./StartPage.module.css";
 
 const StartPage = () => {
   const [customizeGame, setCustomizeGame] = useState(false);
-  const [quickGameData, setQuickGameData] = useFetch(
+  const [quickGameData, fetchQuickGameData] = useFetch(
     "https://opentdb.com/api.php?amount=10"
   );
   // const [customGameData, setCustomGameData] = useFetch("https://opentdb.com/api.php?amount=10");
 
   const handleQuickGame = () => {
-    setQuickGameData();
+    console.log("StartPage: handleQuickGameData");
+    fetchQuickGameData();
   };
 
   const handleCustomizeGame = () => {
@@ -23,7 +24,7 @@ const StartPage = () => {
 
   return (
     <>
-      {!quickGameData && !customizeGame && (
+      {!quickGameData.data && !customizeGame && (
         <section className={styles.container}>
           <button className={styles.button} onClick={handleQuickGame}>
             Quick Game
@@ -34,8 +35,11 @@ const StartPage = () => {
         </section>
       )}
 
-      {quickGameData && !customizeGame && (
-        <QuizPage data={quickGameData.results} />
+      {quickGameData.isLoading && !customizeGame && (
+        <span className={styles.loading}>Loading...</span>
+      )}
+      {quickGameData.data && !customizeGame && (
+        <QuizPage data={quickGameData.data.results} />
       )}
       {customizeGame && !!quickGameData && <FormPage />}
     </>

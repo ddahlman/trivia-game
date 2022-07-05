@@ -14,3 +14,7 @@
   border: none;
   font: inherit;
 }
+
+.loading {
+  color: #fff;
+}
