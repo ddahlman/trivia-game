@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
 import { LabeledSelect } from "./LabeledSelect/LabeledSelect";
-import { deduplicateOptions, getOptions } from "../utils/utils";
 import { QuizPage } from "../QuizPage/QuizPage";
 import { useFetch } from "../customHooks/useFetch";
 import styles from "./FormPage.module.css";
 
-const FormPage = () => {
-  // const [questionList, setQuestionList] = useState(null);
-  const [doStartQuiz, setDoStartQuiz] = useState(false);
+const FormPage = ({ onReset }) => {
   const [categoryList, setCategoryList] = useState(null);
   const [value, setValue] = useState({
     category: "",
@@ -71,16 +68,10 @@ const FormPage = () => {
     }));
   };
 
-  const handleTryAgain = () => {
-    setDoStartQuiz(false);
-    //setQuestionList(null);
-    setValidationText("");
-  };
-
   console.log("quiz.data: ", quiz.data);
 
   if (quiz.data?.results) {
-    return <QuizPage data={quiz.data.results} />;
+    return <QuizPage quizData={quiz.data.results} onReset={onReset} />;
   } else {
     return (
       <>

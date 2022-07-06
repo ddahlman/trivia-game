@@ -20,6 +20,13 @@ const StartPage = () => {
     setCustomizeGame(true);
   };
 
+  console.log("StartPage rendered");
+
+  const handleReset = () => {
+    quickGameData.data = null;
+    setCustomizeGame(false);
+  };
+
   // console.log("quickGameData: ", quickGameData);
 
   return (
@@ -39,9 +46,9 @@ const StartPage = () => {
         <span className={styles.loading}>Loading...</span>
       )}
       {quickGameData.data && !customizeGame && (
-        <QuizPage data={quickGameData.data.results} />
+        <QuizPage quizData={quickGameData.data.results} onReset={handleReset} />
       )}
-      {customizeGame && !!quickGameData && <FormPage />}
+      {customizeGame && !!quickGameData && <FormPage onReset={handleReset} />}
     </>
   );
 };

@@ -1,13 +1,11 @@
 import { useState, useMemo } from "react";
-import TriviaGame from "../TriviaGame/TriviaGame";
 import { AnswerButton } from "./AnswerButton/AnswerButton";
 import styles from "./QuizPage.module.css";
 
-const QuizPage = ({ data }) => {
+const QuizPage = ({ quizData, onReset }) => {
   const [questionNumber, setQuestionNumber] = useState(0);
   const [points, setPoints] = useState(0);
   const [showResults, setShowResults] = useState(false);
-  const [reset, setReset] = useState(false);
   const [userChoiceDisabled, setUserChoiceDisabled] = useState(false);
 
   const shuffleAnswers = (arr) =>
@@ -18,12 +16,12 @@ const QuizPage = ({ data }) => {
 
   const quiz = useMemo(
     () =>
-      data.map((obj) => ({
+      quizData.map((obj) => ({
         question: obj.question,
         answers: shuffleAnswers([...obj.incorrect_answers, obj.correct_answer]),
         correctAnswer: obj.correct_answer,
       })),
-    [data]
+    [quizData]
   );
 
   const handleUserChoice = (e) => {
@@ -35,7 +33,7 @@ const QuizPage = ({ data }) => {
   };
 
   const handleNextQuestion = () => {
-    if (questionNumber + 1 === data.length) {
+    if (questionNumber + 1 === quizData.length) {
       setShowResults(true);
     } else {
       setQuestionNumber((questionNumber) => questionNumber + 1);
@@ -43,25 +41,22 @@ const QuizPage = ({ data }) => {
     setUserChoiceDisabled(false);
   };
 
-  const handleReset = () => {
-    setReset(true);
+  const handleTriviaGameReset = () => {
+    onReset();
   };
 
-  if (reset) {
-    return <TriviaGame />;
-  }
   if (showResults) {
     return (
       <>
-        <h1>{`You got ${points} out of ${data.length}`}</h1>;
-        <button onClick={handleReset}>Try Again</button>
+        <h1>{`You got ${points} out of ${quizData.length}`}</h1>
+        <button onClick={handleTriviaGameReset}>Try Again</button>
       </>
     );
   } else {
     return (
       <section className={styles.container}>
         <h1>Quiz Page</h1>
-        {data ? (
+        {quizData ? (
           <>
             <h1
               dangerouslySetInnerHTML={{
@@ -76,8 +71,8 @@ const QuizPage = ({ data }) => {
                 disabled={userChoiceDisabled}
               />
             ))}
-            <p>Points: {`${points} / ${data.length}`}</p>
-            <p>Progress: {`${questionNumber + 1} / ${data.length}`}</p>
+            <p>Points: {`${points} / ${quizData.length}`}</p>
+            <p>Progress: {`${questionNumber + 1} / ${quizData.length}`}</p>
             <button className={styles.button} onClick={handleNextQuestion}>
               Next Question
             </button>
