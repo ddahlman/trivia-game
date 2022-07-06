@@ -7,7 +7,10 @@ const LabeledSelect = ({ name, label, value, onChange, options }) => {
           {label}
         </option>
         {options.map((option) => (
-          <option key={option.id || option.label} value={option.value}>
+          <option
+            key={option.id || option.label}
+            value={option.id || option.value}
+          >
             {option.label}
           </option>
         ))}

@@ -12,10 +12,14 @@ const FormPage = () => {
   const [value, setValue] = useState({
     category: "",
     difficulty: "",
+    amountOfQuestions: "",
   });
   const [validationText, setValidationText] = useState("");
   const [categories, fetchCategories] = useFetch(
     "https://opentdb.com/api_category.php"
+  );
+  const [quiz, fetchQuiz] = useFetch(
+    `https://opentdb.com/api.php?amount=${value.amountOfQuestions}&category=${value.category}&difficulty=${value.difficulty}`
   );
 
   useEffect(() => {
@@ -40,7 +44,8 @@ const FormPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("i submit");
-    setDoStartQuiz(true);
+    fetchQuiz();
+    //setDoStartQuiz(true);
   };
 
   // useEffect(() => {
@@ -50,7 +55,6 @@ const FormPage = () => {
   //         obj.category === value.category && obj.difficulty === value.difficulty
   //       );
   //     });
-  //     console.log("matchedOptions: ", matchedOptions);
   //     const nr = matchedOptions.length;
   //     const text = `There ${nr === 1 ? "is" : "are"} ${nr} question${
   //       nr === 1 ? "" : "s"
@@ -73,51 +77,55 @@ const FormPage = () => {
     setValidationText("");
   };
 
-  // if (doStartQuiz) {
-  //   return questionList.length > 0 ? (
-  //     <QuizPage data={questionList} />
-  //   ) : (
-  //     <>
-  //       <h1>Sorry there are no questions that matches your criteria...</h1>
-  //       <button onClick={handleTryAgain}>Try Again</button>
-  //     </>
-  //   );
-  // } else {
-  //https://opentdb.com/api_category.php
-  // console.log("categories: ", categories);
-  return (
-    <>
-      {categories.isLoading && (
-        <span className={styles.loading}>Loading...</span>
-      )}
-      {categoryList && (
-        <form onSubmit={handleSubmit}>
-          <h1>Custumize Page</h1>
-          <LabeledSelect
-            name={"category"}
-            label={"Category"}
-            value={value.category}
-            onChange={handleSelect}
-            options={categoryList}
-          />
-          <LabeledSelect
-            name={"difficulty"}
-            label={"Difficulty"}
-            value={value.difficulty}
-            onChange={handleSelect}
-            options={[
-              { label: "easy", value: "easy" },
-              { label: "medium", value: "medium" },
-              { label: "hard", value: "hard" },
-            ]}
-          />
-          <section>{validationText && <h2>{validationText}</h2>}</section>
-          <button>Create Quiz</button>
-        </form>
-      )}
-    </>
-  );
-  // }
+  console.log("quiz.data: ", quiz.data);
+
+  if (quiz.data?.results) {
+    return <QuizPage data={quiz.data.results} />;
+  } else {
+    return (
+      <>
+        {categories.isLoading && (
+          <span className={styles.loading}>Loading...</span>
+        )}
+        {categoryList && (
+          <form onSubmit={handleSubmit}>
+            <h1>Custumize Page</h1>
+            <LabeledSelect
+              name={"category"}
+              label={"Category"}
+              value={value.category}
+              onChange={handleSelect}
+              options={categoryList}
+            />
+            <LabeledSelect
+              name={"difficulty"}
+              label={"Difficulty"}
+              value={value.difficulty}
+              onChange={handleSelect}
+              options={[
+                { label: "easy", value: "easy" },
+                { label: "medium", value: "medium" },
+                { label: "hard", value: "hard" },
+              ]}
+            />
+            <LabeledSelect
+              name={"amountOfQuestions"}
+              label={"Amount Of Questions"}
+              value={value.amountOfQuestions}
+              onChange={handleSelect}
+              options={[
+                { label: "10", value: "10" },
+                { label: "20", value: "20" },
+                { label: "30", value: "30" },
+              ]}
+            />
+            <section>{validationText && <h2>{validationText}</h2>}</section>
+            <button>Create Quiz</button>
+          </form>
+        )}
+      </>
+    );
+  }
 };
 
 export { FormPage };

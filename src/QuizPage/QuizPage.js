@@ -9,7 +9,7 @@ const QuizPage = ({ data }) => {
   const [showResults, setShowResults] = useState(false);
   const [reset, setReset] = useState(false);
   const [userChoiceDisabled, setUserChoiceDisabled] = useState(false);
-  console.log("QuizPage");
+
   const shuffleAnswers = (arr) =>
     arr
       .map((answer) => ({ answer, sort: Math.random() }))
