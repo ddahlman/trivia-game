@@ -49,7 +49,7 @@ const useFetch = (url) => {
       throw new Error(`useFetch: Error in get request: ${err}`);
     }
   };
-  console.log("state: ", state);
+
   return [{ data: state.data, isLoading: state.isLoading }, get];
 };
 

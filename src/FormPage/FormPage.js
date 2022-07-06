@@ -3,6 +3,7 @@ import { LabeledSelect } from "./LabeledSelect/LabeledSelect";
 import { deduplicateOptions, getOptions } from "../utils/utils";
 import { QuizPage } from "../QuizPage/QuizPage";
 import { useFetch } from "../customHooks/useFetch";
+import styles from "./FormPage.module.css";
 
 const FormPage = () => {
   // const [questionList, setQuestionList] = useState(null);
@@ -23,12 +24,15 @@ const FormPage = () => {
 
   useEffect(() => {
     if (categories.data?.trivia_categories) {
+      /** make categories work for LabeledSelect.
+       destructuring name key from object and renaming it to label, destructuring ...rest.
+       @return object with label, value and the rest.*/
+
       const categoriesForSelection = categories.data.trivia_categories.map(
         ({ name: label, ...rest }) => {
           return { ...{}, label, value: label, ...rest };
         }
       );
-      console.log("categoriesForSelection: ", categoriesForSelection);
       setCategoryList(categoriesForSelection);
     }
   }, [categories.data]);
@@ -83,6 +87,9 @@ const FormPage = () => {
   // console.log("categories: ", categories);
   return (
     <>
+      {categories.isLoading && (
+        <span className={styles.loading}>Loading...</span>
+      )}
       {categoryList && (
         <form onSubmit={handleSubmit}>
           <h1>Custumize Page</h1>
