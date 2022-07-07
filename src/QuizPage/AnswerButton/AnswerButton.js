@@ -1,3 +1,4 @@
+import { decodeHTMLEntities } from "../../utils/utils";
 import styles from "./AnswerButton.module.css";
 
 const AnswerButton = ({ answer, onClick, disabled }) => {
@@ -7,10 +8,9 @@ const AnswerButton = ({ answer, onClick, disabled }) => {
       disabled={disabled}
       data-answer={answer}
       onClick={onClick}
-      dangerouslySetInnerHTML={{
-        __html: answer,
-      }}
-    ></button>
+    >
+      {decodeHTMLEntities(answer)}
+    </button>
   );
 };
 

@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { decodeHTMLEntities } from "../utils/utils";
 import { AnswerButton } from "./AnswerButton/AnswerButton";
 import styles from "./QuizPage.module.css";
 
@@ -58,11 +59,7 @@ const QuizPage = ({ quizData, onReset }) => {
       <h1>Quiz Page</h1>
       {quizData ? (
         <>
-          <h1
-            dangerouslySetInnerHTML={{
-              __html: quiz[questionNumber].question,
-            }}
-          ></h1>
+          <h1>{decodeHTMLEntities(quiz[questionNumber].question)}</h1>
           {quiz[questionNumber].answers.map((answer) => (
             <AnswerButton
               key={answer}

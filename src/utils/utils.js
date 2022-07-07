@@ -24,4 +24,10 @@ const getOptions = (arr, prop) => {
   }
 };
 
-export { deduplicateOptions, getOptions };
+const decodeHTMLEntities = (text) => {
+  var textArea = document.createElement("textarea");
+  textArea.innerHTML = text;
+  return textArea.value;
+};
+
+export { deduplicateOptions, getOptions, decodeHTMLEntities };
