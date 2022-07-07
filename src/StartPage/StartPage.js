@@ -9,7 +9,6 @@ const StartPage = () => {
   const [quickGameData, fetchQuickGameData] = useFetch(
     "https://opentdb.com/api.php?amount=10"
   );
-  // const [customGameData, setCustomGameData] = useFetch("https://opentdb.com/api.php?amount=10");
 
   const handleQuickGame = () => {
     console.log("StartPage: handleQuickGameData");
@@ -20,14 +19,13 @@ const StartPage = () => {
     setCustomizeGame(true);
   };
 
-  console.log("StartPage rendered");
-
-  const handleReset = () => {
-    quickGameData.data = null;
-    setCustomizeGame(false);
+  const handleQuickGameReset = () => {
+    fetchQuickGameData(false);
   };
 
-  // console.log("quickGameData: ", quickGameData);
+  const handleCustomGameReset = () => {
+    setCustomizeGame(false);
+  };
 
   return (
     <>
@@ -46,9 +44,14 @@ const StartPage = () => {
         <span className={styles.loading}>Loading...</span>
       )}
       {quickGameData.data && !customizeGame && (
-        <QuizPage quizData={quickGameData.data.results} onReset={handleReset} />
+        <QuizPage
+          quizData={quickGameData.data.results}
+          onReset={handleQuickGameReset}
+        />
       )}
-      {customizeGame && !!quickGameData && <FormPage onReset={handleReset} />}
+      {customizeGame && !quickGameData.data && (
+        <FormPage onReset={handleCustomGameReset} />
+      )}
     </>
   );
 };

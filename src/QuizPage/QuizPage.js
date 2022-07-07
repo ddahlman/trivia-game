@@ -52,37 +52,36 @@ const QuizPage = ({ quizData, onReset }) => {
         <button onClick={handleTriviaGameReset}>Try Again</button>
       </>
     );
-  } else {
-    return (
-      <section className={styles.container}>
-        <h1>Quiz Page</h1>
-        {quizData ? (
-          <>
-            <h1
-              dangerouslySetInnerHTML={{
-                __html: quiz[questionNumber].question,
-              }}
-            ></h1>
-            {quiz[questionNumber].answers.map((answer) => (
-              <AnswerButton
-                key={answer}
-                answer={answer}
-                onClick={handleUserChoice}
-                disabled={userChoiceDisabled}
-              />
-            ))}
-            <p>Points: {`${points} / ${quizData.length}`}</p>
-            <p>Progress: {`${questionNumber + 1} / ${quizData.length}`}</p>
-            <button className={styles.button} onClick={handleNextQuestion}>
-              Next Question
-            </button>
-          </>
-        ) : (
-          <h1>Technical Error, try reloading the page</h1>
-        )}
-      </section>
-    );
   }
+  return (
+    <section className={styles.container}>
+      <h1>Quiz Page</h1>
+      {quizData ? (
+        <>
+          <h1
+            dangerouslySetInnerHTML={{
+              __html: quiz[questionNumber].question,
+            }}
+          ></h1>
+          {quiz[questionNumber].answers.map((answer) => (
+            <AnswerButton
+              key={answer}
+              answer={answer}
+              onClick={handleUserChoice}
+              disabled={userChoiceDisabled}
+            />
+          ))}
+          <p>Points: {`${points} / ${quizData.length}`}</p>
+          <p>Progress: {`${questionNumber + 1} / ${quizData.length}`}</p>
+          <button className={styles.button} onClick={handleNextQuestion}>
+            Next Question
+          </button>
+        </>
+      ) : (
+        <h1>Technical Error, try reloading the page</h1>
+      )}
+    </section>
+  );
 };
 
 export { QuizPage };

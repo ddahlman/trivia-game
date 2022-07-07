@@ -35,16 +35,22 @@ const useFetch = (url) => {
     return cleanup();
   });
 
-  const get = async () => {
+  const get = async (getData = true) => {
     try {
-      dispatch({ type: actionType.DATA, payload: { isLoading: true } });
-      const response = await fetch(url);
-      const data = await response.json();
-      console.log("useFetch: data in get: ", data);
-      dispatch({
-        type: actionType.DATA,
-        payload: { data, isLoading: false },
-      });
+      if (getData) {
+        dispatch({ type: actionType.DATA, payload: { isLoading: true } });
+        const response = await fetch(url);
+        const data = await response.json();
+        dispatch({
+          type: actionType.DATA,
+          payload: { data, isLoading: false },
+        });
+      } else {
+        dispatch({
+          type: actionType.DATA,
+          payload: { data: null, isLoading: false },
+        });
+      }
     } catch (err) {
       throw new Error(`useFetch: Error in get request: ${err}`);
     }
