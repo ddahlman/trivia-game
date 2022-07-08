@@ -17,11 +17,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
 h1 {
   text-align: center;
+  color: #fff;
 }
 
-h1,
-p {
-  color: #fff;
+p,
+h2,
+label {
+  color: #444;
 }

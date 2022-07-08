@@ -55,11 +55,13 @@ const QuizPage = ({ quizData, onReset }) => {
   }
   return (
     <section className={styles.container}>
-      <h1>Quiz Page</h1>
+      <h2 className={styles.quizHeader}>Quiz Page</h2>
       {quizData ? (
         <>
-          <h1>{decodeHTMLEntities(quiz[questionNumber].question)}</h1>
-          <section onChange={handleUserChoice}>
+          <p className={styles.question}>
+            {decodeHTMLEntities(quiz[questionNumber].question)}
+          </p>
+          <section className={styles.answerSection} onChange={handleUserChoice}>
             {quiz[questionNumber].answers.map((answer) => (
               <AnswerRadioButton
                 key={answer}
@@ -69,7 +71,9 @@ const QuizPage = ({ quizData, onReset }) => {
             ))}
           </section>
           <p>Points: {`${points} / ${quizData.length}`}</p>
-          <p>Progress: {`${questionNumber + 1} / ${quizData.length}`}</p>
+          <p className={styles.progress}>
+            Progress: {`${questionNumber + 1} / ${quizData.length}`}
+          </p>
           <button className={styles.button} onClick={handleNextQuestion}>
             Next Question
           </button>

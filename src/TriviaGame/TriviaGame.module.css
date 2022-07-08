@@ -1,14 +1,15 @@
 .container {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 0.5fr 1fr 0.5fr;
   grid-template-rows: 200px 1fr 200px;
-  background-color: #9a28ab;
+  background: linear-gradient(#84e2ff 60%, #ffd3a9);
   justify-items: center;
 }
 
 .header {
   grid-row: 1;
+  grid-column: 2;
   font-size: calc(10px + 2vmin);
   color: white;
 }
