@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { decodeHTMLEntities } from "../utils/utils";
-import { AnswerButton } from "./AnswerButton/AnswerButton";
+import { AnswerRadioButton } from "./AnswerButton/AnswerRadioButton";
 import styles from "./QuizPage.module.css";
 
 const QuizPage = ({ quizData, onReset }) => {
@@ -26,8 +26,7 @@ const QuizPage = ({ quizData, onReset }) => {
   );
 
   const handleUserChoice = (e) => {
-    console.log("e.target.dataset.answer: ", e.target.dataset.answer);
-    if (quiz[questionNumber].correctAnswer === e.target.dataset.answer) {
+    if (quiz[questionNumber].correctAnswer === e.target.value) {
       setPoints((points) => points + 1);
     }
     setUserChoiceDisabled(true);
@@ -60,14 +59,15 @@ const QuizPage = ({ quizData, onReset }) => {
       {quizData ? (
         <>
           <h1>{decodeHTMLEntities(quiz[questionNumber].question)}</h1>
-          {quiz[questionNumber].answers.map((answer) => (
-            <AnswerButton
-              key={answer}
-              answer={answer}
-              onClick={handleUserChoice}
-              disabled={userChoiceDisabled}
-            />
-          ))}
+          <section onChange={handleUserChoice}>
+            {quiz[questionNumber].answers.map((answer) => (
+              <AnswerRadioButton
+                key={answer}
+                answer={answer}
+                disabled={userChoiceDisabled}
+              />
+            ))}
+          </section>
           <p>Points: {`${points} / ${quizData.length}`}</p>
           <p>Progress: {`${questionNumber + 1} / ${quizData.length}`}</p>
           <button className={styles.button} onClick={handleNextQuestion}>

@@ -11,7 +11,6 @@ const StartPage = () => {
   );
 
   const handleQuickGame = () => {
-    console.log("StartPage: handleQuickGameData");
     fetchQuickGameData();
   };
 

@@ -11,7 +11,6 @@ const FormPage = ({ onReset }) => {
     difficulty: "",
     amountOfQuestions: "",
   });
-  const [validationText, setValidationText] = useState("");
   const [categories, fetchCategories] = useFetch(
     "https://opentdb.com/api_category.php"
   );
@@ -40,26 +39,8 @@ const FormPage = ({ onReset }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("i submit");
     fetchQuiz();
-    //setDoStartQuiz(true);
   };
-
-  // useEffect(() => {
-  //   if (value.category && value.difficulty) {
-  //     const matchedOptions = data.filter((obj) => {
-  //       return (
-  //         obj.category === value.category && obj.difficulty === value.difficulty
-  //       );
-  //     });
-  //     const nr = matchedOptions.length;
-  //     const text = `There ${nr === 1 ? "is" : "are"} ${nr} question${
-  //       nr === 1 ? "" : "s"
-  //     } that matches your criteria`;
-  //     setValidationText(text);
-  //     setQuestionList(matchedOptions);
-  //   }
-  // }, [value.category, value.difficulty]);
 
   const handleSelect = (e) => {
     setValue((value) => ({
@@ -67,8 +48,6 @@ const FormPage = ({ onReset }) => {
       [e.target.name]: e.target.value,
     }));
   };
-
-  console.log("quiz.data: ", quiz.data);
 
   if (quiz.data?.results) {
     return <QuizPage quizData={quiz.data.results} onReset={onReset} />;
@@ -110,7 +89,6 @@ const FormPage = ({ onReset }) => {
                 { label: "30", value: "30" },
               ]}
             />
-            <section>{validationText && <h2>{validationText}</h2>}</section>
             <button>Create Quiz</button>
           </form>
         )}
