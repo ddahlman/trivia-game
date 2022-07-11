@@ -3,7 +3,7 @@ import styles from "./AnswerRadioButton.module.css";
 
 const AnswerRadioButton = ({ answer, disabled }) => {
   return (
-    <label>
+    <label className={styles.radioLabel}>
       <input
         className={styles.radio}
         type="radio"

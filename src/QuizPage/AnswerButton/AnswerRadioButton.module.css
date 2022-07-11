@@ -1,10 +1,12 @@
-.radio {
-  padding: 5px;
-  background-color: #444;
-  color: #fff;
+.radioLabel {
+  border: 2px solid #fff;
   border-radius: 3px;
-  border: 2px solid #444;
-  font: inherit;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.radio {
+  opacity: 0;
 }
 
 .radio:disabled {

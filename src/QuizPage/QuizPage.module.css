@@ -1,9 +1,10 @@
 .container {
-  grid-row: 2;
-  grid-column: 2;
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  width: 100%;
   display: grid;
-  grid-template-columns: 0.5fr 1fr 0.5fr;
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr 100px 210px 1fr;
 }
 
 .quizHeader {
@@ -15,24 +16,28 @@
   grid-row: 1;
 }
 .progress {
-  grid-column: 3;
+  grid-column: 4;
   grid-row: 1;
+  justify-self: end;
 }
 
 .question {
-  grid-column: 2;
+  grid-column: 2 / 4;
   grid-row: 2;
   font-size: 1.5rem;
 }
 
 .answerSection {
-  grid-column: 2;
+  grid-column: 2 / 4;
   grid-row: 3;
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  gap: 10px;
 }
 
 .button {
-  grid-column: 2;
-  grid-row: 3;
+  grid-column: 3;
+  grid-row: 4;
   justify-self: end;
   align-self: end;
   padding: 10px;
