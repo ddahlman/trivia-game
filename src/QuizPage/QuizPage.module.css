@@ -39,4 +39,6 @@
 .resultContainer {
   grid-area: 2 / 2;
   display: grid;
+  grid-template-rows: max-content;
+  align-items: start;
 }

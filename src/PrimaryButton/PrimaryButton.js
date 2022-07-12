@@ -1,10 +1,10 @@
 import styles from "./PrimaryButton.module.css";
 
-const PrimaryButton = ({ onClick, text, pageLayout = null }) => {
+const PrimaryButton = ({ onClick, text, pageGridLayout = null }) => {
   return (
     <button
       className={`${styles.primaryButton}${
-        pageLayout ? ` ${styles[pageLayout]}` : ""
+        pageGridLayout ? ` ${styles[pageGridLayout]}` : ""
       }`}
       onClick={onClick}
     >

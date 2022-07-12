@@ -1,7 +1,7 @@
 .primaryButton {
   padding: 10px;
   cursor: pointer;
-  background-color: #cd7e33;
+  background-color: #feb571;
   color: #00303e;
   border-radius: 3px;
   border: none;
@@ -9,9 +9,17 @@
   font-weight: bold;
 }
 
-.quizGridLayout {
+.quizNextQuestion {
   grid-column: 3;
   grid-row: 4;
   justify-self: end;
   align-self: end;
+}
+
+.quizReset {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: start;
+  align-self: start;
+  margin: 40px 0;
 }
