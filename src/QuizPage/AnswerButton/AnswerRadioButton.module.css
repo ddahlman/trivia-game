@@ -1,8 +1,10 @@
 .radioLabel {
-  border: 2px solid #fff;
+  border: 2px solid #fff9e9;
   border-radius: 3px;
   padding: 10px;
   cursor: pointer;
+  color: #cd7e33;
+  font-weight: bold;
 }
 
 .radio {

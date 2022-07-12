@@ -20,11 +20,13 @@ code {
 
 h1 {
   text-align: center;
-  color: #fff;
 }
 
-p,
-h2,
-label {
-  color: #444;
+h1,
+h2 {
+  color: #00303e;
+}
+
+p {
+  color: #004b61;
 }

@@ -4,7 +4,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1fr 100px 210px 1fr;
+  grid-template-rows: 1fr 110px 210px 1fr;
 }
 
 .quizHeader {
@@ -24,6 +24,7 @@
 .question {
   grid-column: 2 / 4;
   grid-row: 2;
+  margin: 0;
   font-size: 1.5rem;
 }
 
@@ -42,8 +43,8 @@
   align-self: end;
   padding: 10px;
   cursor: pointer;
-  background-color: #444;
-  color: #fff;
+  background-color: #cd7e33;
+  color: #fff9e9;
   border-radius: 3px;
   border: none;
   font: inherit;
