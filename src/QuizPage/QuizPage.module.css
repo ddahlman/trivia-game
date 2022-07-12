@@ -36,16 +36,7 @@
   gap: 10px;
 }
 
-.button {
-  grid-column: 3;
-  grid-row: 4;
-  justify-self: end;
-  align-self: end;
-  padding: 10px;
-  cursor: pointer;
-  background-color: #cd7e33;
-  color: #fff9e9;
-  border-radius: 3px;
-  border: none;
-  font: inherit;
+.resultContainer {
+  grid-area: 2 / 2;
+  display: grid;
 }

@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { PrimaryButton } from "../PrimaryButton/PrimaryButton";
 import { decodeHTMLEntities } from "../utils/utils";
 import { AnswerRadioButton } from "./AnswerButton/AnswerRadioButton";
 import styles from "./QuizPage.module.css";
@@ -41,16 +42,12 @@ const QuizPage = ({ quizData, onReset }) => {
     setUserChoiceDisabled(false);
   };
 
-  const handleTriviaGameReset = () => {
-    onReset();
-  };
-
   if (showResults) {
     return (
-      <>
-        <h1>{`You got ${points} out of ${quizData.length}`}</h1>
-        <button onClick={handleTriviaGameReset}>Try Again</button>
-      </>
+      <section className={styles.resultContainer}>
+        <h2>{`You got ${points} out of ${quizData.length}`}</h2>
+        <PrimaryButton onClick={onReset} text="Try Again" />{" "}
+      </section>
     );
   }
   return (
@@ -74,9 +71,11 @@ const QuizPage = ({ quizData, onReset }) => {
           <p className={styles.progress}>
             Progress: {`${questionNumber + 1} / ${quizData.length}`}
           </p>
-          <button className={styles.button} onClick={handleNextQuestion}>
-            Next Question
-          </button>
+          <PrimaryButton
+            onClick={handleNextQuestion}
+            pageLayout="quizGridLayout"
+            text="Next Question"
+          />
         </>
       ) : (
         <h1>Technical Error, try reloading the page</h1>

@@ -1,0 +1,17 @@
+.primaryButton {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #cd7e33;
+  color: #00303e;
+  border-radius: 3px;
+  border: none;
+  font: inherit;
+  font-weight: bold;
+}
+
+.quizGridLayout {
+  grid-column: 3;
+  grid-row: 4;
+  justify-self: end;
+  align-self: end;
+}
