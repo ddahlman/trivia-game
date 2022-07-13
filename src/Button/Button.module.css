@@ -32,3 +32,8 @@
   align-self: start;
   margin: 5% 0;
 }
+
+.formCreateQuiz {
+  justify-self: end;
+  align-self: center;
+}

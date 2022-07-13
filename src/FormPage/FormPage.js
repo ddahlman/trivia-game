@@ -89,7 +89,11 @@ const FormPage = ({ onReset }) => {
                 { label: "30", value: "30" },
               ]}
             />
-            <Button onClick={() => null} text="Create Quiz" />
+            <Button
+              onClick={() => null}
+              text="Create Quiz"
+              pageGridLayout="formCreateQuiz"
+            />
           </form>
         )}
       </>
