@@ -27,27 +27,34 @@ const StartPage = () => {
     setCustomizeGame(false);
   };
 
+  const STAGE = {
+    INITIAL: !!(
+      !quickGameData.data &&
+      !quickGameData.isLoading &&
+      !customizeGame
+    ),
+    IS_LOADING: !!(quickGameData.isLoading && !customizeGame),
+    QUICK_GAME: !!(quickGameData.data && !customizeGame),
+    CUSTOMIZE_GAME: !!(customizeGame && !quickGameData.data),
+  };
+
   return (
     <>
-      {!quickGameData.data && !customizeGame && (
+      {STAGE.INITIAL && (
         <section className={styles.container}>
           <PrimaryButton onClick={handleQuickGame} text="Quick Game" />
           <PrimaryButton onClick={handleCustomizeGame} text="Customize Game" />
         </section>
       )}
 
-      {quickGameData.isLoading && !customizeGame && (
-        <span className={styles.loading}>Loading...</span>
-      )}
-      {quickGameData.data && !customizeGame && (
+      {STAGE.IS_LOADING && <span className={styles.loading}>Loading...</span>}
+      {STAGE.QUICK_GAME && (
         <QuizPage
           quizData={quickGameData.data.results}
           onReset={handleQuickGameReset}
         />
       )}
-      {customizeGame && !quickGameData.data && (
-        <FormPage onReset={handleCustomGameReset} />
-      )}
+      {STAGE.CUSTOMIZE_GAME && <FormPage onReset={handleCustomGameReset} />}
     </>
   );
 };

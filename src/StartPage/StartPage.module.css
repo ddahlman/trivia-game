@@ -7,5 +7,7 @@
 }
 
 .loading {
-  color: #fff;
+  grid-area: 2 / 2;
+  color: #004b61;
+  font-size: 2rem;
 }
