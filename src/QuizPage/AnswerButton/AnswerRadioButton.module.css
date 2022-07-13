@@ -3,7 +3,7 @@
   border-radius: 3px;
   padding: 10px;
   cursor: pointer;
-  color: #00303e;
+  color: var(--header-color);
   font-weight: bold;
 }
 
