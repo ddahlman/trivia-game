@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useFetch } from "../customHooks/useFetch";
 import { FormPage } from "../FormPage/FormPage";
+import { Loading } from "../Loading/Loading";
 import { PrimaryButton } from "../PrimaryButton/PrimaryButton";
 import { QuizPage } from "../QuizPage/QuizPage";
 import styles from "./StartPage.module.css";
@@ -47,7 +48,7 @@ const StartPage = () => {
         </section>
       )}
 
-      {STAGE.IS_LOADING && <span className={styles.loading}>Loading...</span>}
+      {STAGE.IS_LOADING && <Loading />}
       {STAGE.QUICK_GAME && (
         <QuizPage
           quizData={quickGameData.data.results}

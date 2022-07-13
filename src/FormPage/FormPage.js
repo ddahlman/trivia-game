@@ -3,6 +3,7 @@ import { LabeledSelect } from "./LabeledSelect/LabeledSelect";
 import { QuizPage } from "../QuizPage/QuizPage";
 import { useFetch } from "../customHooks/useFetch";
 import styles from "./FormPage.module.css";
+import { Loading } from "../Loading/Loading";
 
 const FormPage = ({ onReset }) => {
   const [categoryList, setCategoryList] = useState(null);
@@ -54,9 +55,7 @@ const FormPage = ({ onReset }) => {
   } else {
     return (
       <>
-        {categories.isLoading && (
-          <span className={styles.loading}>Loading...</span>
-        )}
+        {categories.isLoading && <Loading />}
         {categoryList && (
           <form onSubmit={handleSubmit}>
             <h1>Custumize Page</h1>
