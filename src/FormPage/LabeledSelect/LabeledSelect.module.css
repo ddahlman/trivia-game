@@ -6,4 +6,7 @@
 .select {
   display: block;
   margin: 5px 0;
+  padding: var(--interaction-element-padding);
+  border-radius: var(--border-radius);
+  border: 2px solid var(--secondary-color);
 }

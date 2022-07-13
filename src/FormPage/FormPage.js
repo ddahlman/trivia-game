@@ -4,6 +4,7 @@ import { QuizPage } from "../QuizPage/QuizPage";
 import { useFetch } from "../customHooks/useFetch";
 import styles from "./FormPage.module.css";
 import { Loading } from "../Loading/Loading";
+import { Button } from "../Button/Button";
 
 const FormPage = ({ onReset }) => {
   const [categoryList, setCategoryList] = useState(null);
@@ -58,7 +59,7 @@ const FormPage = ({ onReset }) => {
         {categories.isLoading && <Loading />}
         {categoryList && (
           <form className={styles.form} onSubmit={handleSubmit}>
-            <h2>Custumize Page</h2>
+            <h2>Custumize Game</h2>
             <LabeledSelect
               name={"category"}
               label={"Category"}
@@ -88,7 +89,7 @@ const FormPage = ({ onReset }) => {
                 { label: "30", value: "30" },
               ]}
             />
-            <button>Create Quiz</button>
+            <Button onClick={() => null} text="Create Quiz" />
           </form>
         )}
       </>

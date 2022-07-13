@@ -2,6 +2,8 @@
   --header-color: #00303e;
   --secondary-color: #004b61;
   --highlight-color: #feb571;
+  --interaction-element-padding: 10px;
+  --border-radius: 3px;
 }
 
 *,
