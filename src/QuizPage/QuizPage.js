@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { PrimaryButton } from "../PrimaryButton/PrimaryButton";
+import { Button } from "../Button/Button";
 import { decodeHTMLEntities } from "../utils/utils";
 import { AnswerRadioButton } from "./AnswerButton/AnswerRadioButton";
 import styles from "./QuizPage.module.css";
@@ -46,15 +46,16 @@ const QuizPage = ({ quizData, onReset }) => {
     return (
       <section className={styles.resultContainer}>
         <h2>{`You got ${points} out of ${quizData.length}`}</h2>
-        <PrimaryButton onClick={onReset} text="Try Again" />{" "}
+        <Button onClick={onReset} text="Try Again" />{" "}
       </section>
     );
   }
   return (
     <>
-      <PrimaryButton
+      <Button
+        secondaryType={true}
         onClick={onReset}
-        text="Reset"
+        text="Reset Game"
         pageGridLayout="quizReset"
       />
       <section className={styles.container}>
@@ -80,7 +81,7 @@ const QuizPage = ({ quizData, onReset }) => {
             <p className={styles.progress}>
               Progress: {`${questionNumber + 1} / ${quizData.length}`}
             </p>
-            <PrimaryButton
+            <Button
               onClick={handleNextQuestion}
               pageGridLayout="quizNextQuestion"
               text="Next Question"

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useFetch } from "../customHooks/useFetch";
 import { FormPage } from "../FormPage/FormPage";
 import { Loading } from "../Loading/Loading";
-import { PrimaryButton } from "../PrimaryButton/PrimaryButton";
+import { Button } from "../Button/Button";
 import { QuizPage } from "../QuizPage/QuizPage";
 import styles from "./StartPage.module.css";
 
@@ -43,8 +43,8 @@ const StartPage = () => {
     <>
       {STAGE.INITIAL && (
         <section className={styles.container}>
-          <PrimaryButton onClick={handleQuickGame} text="Quick Game" />
-          <PrimaryButton onClick={handleCustomizeGame} text="Customize Game" />
+          <Button onClick={handleQuickGame} text="Quick Game" />
+          <Button onClick={handleCustomizeGame} text="Customize Game" />
         </section>
       )}
 
