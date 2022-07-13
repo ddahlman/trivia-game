@@ -8,14 +8,14 @@
 }
 
 .primary {
-  background-color: #feb571;
+  background-color: var(--highlight-color);
   border: none;
 }
 
 .secondary {
   background-color: transparent;
   color: #00303e;
-  border: 2px solid #feb571;
+  border: 2px solid var(--highlight-color);
 }
 
 .quizNextQuestion {

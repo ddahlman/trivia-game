@@ -1,3 +1,5 @@
-.loading {
-  color: #fff;
+.form {
+  grid-area: 2 / 2;
+  display: grid;
+  gap: 10px;
 }

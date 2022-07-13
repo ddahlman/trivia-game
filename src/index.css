@@ -1,3 +1,9 @@
+:root {
+  --header-color: #00303e;
+  --secondary-color: #004b61;
+  --highlight-color: #feb571;
+}
+
 *,
 *:before,
 *:after {
@@ -24,9 +30,9 @@ h1 {
 
 h1,
 h2 {
-  color: #00303e;
+  color: var(--header-color);
 }
 
 p {
-  color: #004b61;
+  color: var(--secondary-color);
 }

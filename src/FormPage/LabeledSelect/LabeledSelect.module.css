@@ -1,0 +1,9 @@
+.label {
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+
+.select {
+  display: block;
+  margin: 5px 0;
+}

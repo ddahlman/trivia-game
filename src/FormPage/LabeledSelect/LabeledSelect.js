@@ -1,8 +1,15 @@
+import styles from "./LabeledSelect.module.css";
+
 const LabeledSelect = ({ name, label, value, onChange, options }) => {
   return (
-    <label>
+    <label className={styles.label}>
       {label}
-      <select name={name} value={value} onChange={onChange}>
+      <select
+        className={styles.select}
+        name={name}
+        value={value}
+        onChange={onChange}
+      >
         <option value="" disabled>
           {label}
         </option>

@@ -57,8 +57,8 @@ const FormPage = ({ onReset }) => {
       <>
         {categories.isLoading && <Loading />}
         {categoryList && (
-          <form onSubmit={handleSubmit}>
-            <h1>Custumize Page</h1>
+          <form className={styles.form} onSubmit={handleSubmit}>
+            <h2>Custumize Page</h2>
             <LabeledSelect
               name={"category"}
               label={"Category"}

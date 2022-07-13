@@ -8,6 +8,6 @@
 
 .loading {
   grid-area: 2 / 2;
-  color: #004b61;
+  color: var(--secondary-color);
   font-size: 2rem;
 }
