@@ -4,7 +4,6 @@
   grid-template-columns: 0.5fr 1fr 0.5fr;
   grid-template-rows: 200px 1fr 200px;
   background: linear-gradient(#84e2ff 60%, #ffd3a9);
-  justify-items: center;
 }
 
 .header {
