@@ -12,3 +12,20 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+@media (max-width: 1200px) {
+  .container {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .header {
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    grid-template-rows: 10% 10% 1fr;
+  }
+}

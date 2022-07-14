@@ -1,7 +1,6 @@
 .container {
   grid-column: 2 / 3;
   grid-row: 2 / 3;
-  /* width: 100%; */
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: repeat(2, max-content) 210px 1fr;
@@ -41,4 +40,16 @@
   display: grid;
   grid-template-rows: max-content;
   align-items: start;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    grid-row: 3;
+  }
 }

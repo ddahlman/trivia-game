@@ -37,3 +37,10 @@
   justify-self: end;
   align-self: center;
 }
+
+@media (max-width: 1200px) {
+  .quizReset {
+    grid-column: 1;
+    margin: 5% 0 0 10%;
+  }
+}
