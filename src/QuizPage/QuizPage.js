@@ -51,42 +51,37 @@ const QuizPage = ({ quizData, onReset }) => {
     );
   }
   return (
-    <>
-      <div className={styles.buttonResetGame}>
-        <Button secondaryType={true} onClick={onReset} text="Reset Game" />
-      </div>
-      <section className={styles.container}>
-        <h2 className={styles.quizHeader}>Quiz Page</h2>
-        {quizData ? (
-          <>
-            <p className={styles.question}>
-              {decodeHTMLEntities(quiz[questionNumber].question)}
-            </p>
-            <section
-              className={styles.answerSection}
-              onChange={handleUserChoice}
-            >
-              {quiz[questionNumber].answers.map((answer) => (
-                <AnswerRadioButton
-                  key={answer}
-                  answer={answer}
-                  disabled={userChoiceDisabled}
-                />
-              ))}
-            </section>
-            <p>Points: {`${points} / ${quizData.length}`}</p>
-            <p className={styles.progress}>
-              Progress: {`${questionNumber + 1} / ${quizData.length}`}
-            </p>
-            <div className={styles.buttonNextQuestion}>
-              <Button onClick={handleNextQuestion} text="Next Question" />
-            </div>
-          </>
-        ) : (
-          <h1>Technical Error, try reloading the page</h1>
-        )}
-      </section>
-    </>
+    <section className={styles.container}>
+      <h2 className={styles.quizHeader}>Quiz Page</h2>
+      {quizData ? (
+        <>
+          <p className={styles.question}>
+            {decodeHTMLEntities(quiz[questionNumber].question)}
+          </p>
+          <section className={styles.answerSection} onChange={handleUserChoice}>
+            {quiz[questionNumber].answers.map((answer) => (
+              <AnswerRadioButton
+                key={answer}
+                answer={answer}
+                disabled={userChoiceDisabled}
+              />
+            ))}
+          </section>
+          <p className={styles.points}>
+            Points: {`${points} / ${quizData.length}`}
+          </p>
+          <p className={styles.progress}>
+            Progress: {`${questionNumber + 1} / ${quizData.length}`}
+          </p>
+          <div className={styles.buttonContainer}>
+            <Button secondaryType={true} onClick={onReset} text="Reset Game" />
+            <Button onClick={handleNextQuestion} text="Next Question" />
+          </div>
+        </>
+      ) : (
+        <h1>Technical Error, try reloading the page</h1>
+      )}
+    </section>
   );
 };
 

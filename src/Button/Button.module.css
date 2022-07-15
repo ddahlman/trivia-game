@@ -5,15 +5,15 @@
   font: inherit;
   font-weight: bold;
   color: var(--header-color);
+  border: none;
 }
 
 .primary {
   background-color: var(--highlight-color);
-  border: none;
 }
 
 .secondary {
   background-color: transparent;
   color: var(--header-color);
-  border: 2px solid var(--highlight-color);
+  box-shadow: inset 0px 0px 0px 2px var(--highlight-color);
 }

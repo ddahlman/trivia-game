@@ -1,9 +1,11 @@
 .container {
   grid-column: 2 / 3;
   grid-row: 2 / 3;
+
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: repeat(2, max-content) 210px 1fr;
+  grid-template-rows: max-content repeat(2, 210px) 100px;
+  row-gap: 10px;
 }
 
 .quizHeader {
@@ -35,19 +37,15 @@
   gap: 10px;
 }
 
-.buttonNextQuestion {
-  grid-column: 3;
+.buttonContainer {
+  grid-column: 2;
   grid-row: 4;
   justify-self: end;
-  align-self: end;
-}
-
-.buttonResetGame {
-  grid-column: 2;
-  grid-row: 1;
-  justify-self: start;
   align-self: start;
-  margin: 5% 0;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
 }
 
 .resultContainer {
@@ -61,14 +59,40 @@
   .container {
     grid-column: 1;
   }
-  .buttonResetGame {
-    grid-column: 1;
-    margin: 5% 0 0 10%;
+
+  .points,
+  .progress {
+    justify-self: center;
   }
 }
 
 @media (max-width: 900px) {
   .container {
-    grid-row: 3;
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .quizHeader {
+    grid-column: 2;
+  }
+
+  .points,
+  .progress {
+    place-self: center;
+  }
+
+  .question {
+    grid-column: 2;
+  }
+
+  .answerSection {
+    grid-column: 2;
+  }
+
+  .buttonContainer {
+    grid-column: 2;
+
+    grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+    place-self: center;
   }
 }
