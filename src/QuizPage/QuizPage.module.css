@@ -35,6 +35,21 @@
   gap: 10px;
 }
 
+.buttonNextQuestion {
+  grid-column: 3;
+  grid-row: 4;
+  justify-self: end;
+  align-self: end;
+}
+
+.buttonResetGame {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: start;
+  align-self: start;
+  margin: 5% 0;
+}
+
 .resultContainer {
   grid-area: 2 / 2;
   display: grid;
@@ -45,6 +60,10 @@
 @media (max-width: 1200px) {
   .container {
     grid-column: 1;
+  }
+  .buttonResetGame {
+    grid-column: 1;
+    margin: 5% 0 0 10%;
   }
 }
 

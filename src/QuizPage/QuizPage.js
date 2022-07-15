@@ -52,12 +52,9 @@ const QuizPage = ({ quizData, onReset }) => {
   }
   return (
     <>
-      <Button
-        secondaryType={true}
-        onClick={onReset}
-        text="Reset Game"
-        pageGridLayout="quizReset"
-      />
+      <div className={styles.buttonResetGame}>
+        <Button secondaryType={true} onClick={onReset} text="Reset Game" />
+      </div>
       <section className={styles.container}>
         <h2 className={styles.quizHeader}>Quiz Page</h2>
         {quizData ? (
@@ -81,11 +78,9 @@ const QuizPage = ({ quizData, onReset }) => {
             <p className={styles.progress}>
               Progress: {`${questionNumber + 1} / ${quizData.length}`}
             </p>
-            <Button
-              onClick={handleNextQuestion}
-              pageGridLayout="quizNextQuestion"
-              text="Next Question"
-            />
+            <div className={styles.buttonNextQuestion}>
+              <Button onClick={handleNextQuestion} text="Next Question" />
+            </div>
           </>
         ) : (
           <h1>Technical Error, try reloading the page</h1>

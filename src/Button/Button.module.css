@@ -17,30 +17,3 @@
   color: var(--header-color);
   border: 2px solid var(--highlight-color);
 }
-
-.quizNextQuestion {
-  grid-column: 3;
-  grid-row: 4;
-  justify-self: end;
-  align-self: end;
-}
-
-.quizReset {
-  grid-column: 2;
-  grid-row: 1;
-  justify-self: start;
-  align-self: start;
-  margin: 5% 0;
-}
-
-.formCreateQuiz {
-  justify-self: end;
-  align-self: center;
-}
-
-@media (max-width: 1200px) {
-  .quizReset {
-    grid-column: 1;
-    margin: 5% 0 0 10%;
-  }
-}

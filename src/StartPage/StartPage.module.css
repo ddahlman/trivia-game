@@ -13,3 +13,9 @@
   color: var(--secondary-color);
   font-size: 2rem;
 }
+
+@media (max-width: 1200px) {
+  .container {
+    grid-area: 2 / 1;
+  }
+}
