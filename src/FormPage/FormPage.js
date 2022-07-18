@@ -68,7 +68,7 @@ const FormPage = ({ onReset }) => {
         )}
         {categoryList && (
           <form className={styles.form} onSubmit={handleSubmit}>
-            <h2>Custumize Game</h2>
+            <h2>Customize Game</h2>
             <LabeledSelect
               name={"category"}
               label={"Category"}

@@ -6,6 +6,8 @@
 }
 
 .loadingContainer {
+  grid-area: 2 / 2;
+  place-self: center;
 }
 
 .buttonContainer {
@@ -15,4 +17,27 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--interaction-element-padding);
+}
+
+@media (max-width: 1200px) {
+  .form {
+    grid-area: 2 / 1;
+  }
+
+  .loadingContainer {
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .buttonContainer {
+    grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+    place-self: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .form {
+    grid-template-rows: repeat(4, max-content) 100px;
+  }
 }
