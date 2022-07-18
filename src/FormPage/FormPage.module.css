@@ -5,7 +5,14 @@
   gap: 10px;
 }
 
-.buttonSubmit {
+.loadingContainer {
+}
+
+.buttonContainer {
   justify-self: end;
   align-self: center;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--interaction-element-padding);
 }

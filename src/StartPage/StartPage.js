@@ -48,7 +48,11 @@ const StartPage = () => {
         </section>
       )}
 
-      {STAGE.IS_LOADING && <Loading />}
+      {STAGE.IS_LOADING && (
+        <div className={styles.loadingContainer}>
+          <Loading />
+        </div>
+      )}
       {STAGE.QUICK_GAME && (
         <QuizPage
           quizData={quickGameData.data.results}

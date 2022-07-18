@@ -25,3 +25,9 @@
     grid-column: 1;
   }
 }
+
+@media (max-width: 600px) {
+  .container {
+    grid-template-rows: 50px 1fr;
+  }
+}

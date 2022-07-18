@@ -51,12 +51,21 @@ const FormPage = ({ onReset }) => {
     }));
   };
 
+  const handleReset = (e) => {
+    e.preventDefault();
+    onReset();
+  };
+
   if (quiz.data?.results) {
     return <QuizPage quizData={quiz.data.results} onReset={onReset} />;
   } else {
     return (
       <>
-        {categories.isLoading && <Loading />}
+        {categories.isLoading && (
+          <div className={styles.loadingContainer}>
+            <Loading />
+          </div>
+        )}
         {categoryList && (
           <form className={styles.form} onSubmit={handleSubmit}>
             <h2>Custumize Game</h2>
@@ -89,7 +98,12 @@ const FormPage = ({ onReset }) => {
                 { label: "30", value: "30" },
               ]}
             />
-            <div className={styles.buttonSubmit}>
+            <div className={styles.buttonContainer}>
+              <Button
+                onClick={handleReset}
+                text="Back To Start"
+                secondaryType={true}
+              />
               <Button onClick={() => null} text="Create Quiz" />
             </div>
           </form>

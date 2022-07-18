@@ -8,14 +8,14 @@
   gap: 5px;
 }
 
-.loading {
+.loadingContainer {
   grid-area: 2 / 2;
-  color: var(--secondary-color);
-  font-size: 2rem;
 }
 
 @media (max-width: 1200px) {
+  .loadingContainer,
   .container {
     grid-area: 2 / 1;
+    align-self: center;
   }
 }

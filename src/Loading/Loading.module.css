@@ -1,6 +1,4 @@
 .loading {
-  grid-area: 2 / 2;
-  justify-self: center;
   color: var(--secondary-color);
   font-size: 2rem;
 }
