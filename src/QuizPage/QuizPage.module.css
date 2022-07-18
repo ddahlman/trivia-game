@@ -56,6 +56,10 @@
 }
 
 @media (max-width: 1200px) {
+  .container {
+    justify-self: stretch;
+  }
+
   .container,
   .resultContainer {
     grid-column: 1;

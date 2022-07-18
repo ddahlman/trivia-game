@@ -3,11 +3,24 @@
   font-weight: bold;
 }
 
-.select {
-  display: block;
+.selectContainer {
+  position: relative;
   width: 100%;
-  margin: 5px 0;
-  padding: var(--interaction-element-padding);
+  padding: calc(var(--interaction-element-padding) * 1.5);
   border-radius: var(--border-radius);
   border: 2px solid var(--secondary-color);
+}
+
+.select {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  opacity: 0;
+}
+
+.select option {
+  border-radius: 0;
 }
