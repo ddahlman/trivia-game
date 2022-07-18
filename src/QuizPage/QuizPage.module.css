@@ -52,11 +52,12 @@
   grid-area: 2 / 2;
   display: grid;
   grid-template-rows: max-content;
-  align-items: start;
+  place-content: center;
 }
 
 @media (max-width: 1200px) {
-  .container {
+  .container,
+  .resultContainer {
     grid-column: 1;
   }
 
