@@ -1,5 +1,5 @@
 .button {
-  padding: var(--interaction-element-padding);
+  padding: var(--trivia-unit);
   cursor: pointer;
   border-radius: var(--border-radius);
   font: inherit;

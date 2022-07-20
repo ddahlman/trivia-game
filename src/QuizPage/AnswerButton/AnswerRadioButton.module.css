@@ -1,7 +1,7 @@
 .radioLabel {
   border: 2px solid #fff9e9;
   border-radius: var(--border-radius);
-  padding: var(--interaction-element-padding);
+  padding: var(--trivia-unit);
   cursor: pointer;
   color: var(--header-color);
   font-weight: bold;

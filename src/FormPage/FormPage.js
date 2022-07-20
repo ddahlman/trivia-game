@@ -45,6 +45,7 @@ const FormPage = ({ onReset }) => {
   };
 
   const handleSelect = (e) => {
+    console.log(e.target.value);
     setValue((value) => ({
       ...value,
       [e.target.name]: e.target.value,
