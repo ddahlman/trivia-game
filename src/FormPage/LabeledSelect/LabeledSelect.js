@@ -1,7 +1,14 @@
+import { useState } from "react";
 import { Arrow } from "./Arrow/Arrow";
 import styles from "./LabeledSelect.module.css";
 
 const LabeledSelect = ({ name, label, value, onChange, options }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleSelect = () => {
+    setIsOpen(!isOpen);
+  };
+
   const getPlaceHolder = () => {
     if (name === "category") {
       const category = options.find((option) => option.id === Number(value));
@@ -11,28 +18,39 @@ const LabeledSelect = ({ name, label, value, onChange, options }) => {
   };
 
   return (
-    <div className={styles.selectContainer}>
+    <label className={styles.container} onClick={toggleSelect}>
       {getPlaceHolder()}
-      <select
-        className={styles.select}
-        name={name}
-        value={value}
-        onChange={onChange}
-      >
-        <option value="" disabled>
-          {label}
-        </option>
+      <ul className={`${styles.optionContainer} ${isOpen ? styles.open : ""}`}>
+        <li className={styles.option}>{label}</li>
         {options.map((option) => (
-          <option
-            key={option.id || option.label}
-            value={option.id || option.value}
-          >
+          <li className={styles.option} key={option.id || option.label}>
             {option.label}
-          </option>
+          </li>
         ))}
-      </select>
-      <Arrow />
-    </div>
+      </ul>
+    </label>
+    // <label className={styles.container}>
+    //   {getPlaceHolder()}
+    //   <select
+    //     className={styles.select}
+    //     name={name}
+    //     value={value}
+    //     onChange={onChange}
+    //   >
+    //     <option value="" disabled>
+    //       {label}
+    //     </option>
+    //     {options.map((option) => (
+    //       <option
+    //         key={option.id || option.label}
+    //         value={option.id || option.value}
+    //       >
+    //         {option.label}
+    //       </option>
+    //     ))}
+    //   </select>
+    //   <Arrow />
+    // </label>
   );
 };
 

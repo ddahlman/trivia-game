@@ -1,5 +1,5 @@
 :root {
-  --header-color: #00303e;
+  --primary-color: #00303e;
   --secondary-color: #004b61;
   --highlight-color: #feb571;
   --trivia-unit: 10px;
@@ -32,7 +32,7 @@ h1 {
 
 h1,
 h2 {
-  color: var(--header-color);
+  color: var(--primary-color);
 }
 
 p {

@@ -77,7 +77,7 @@ const FormPage = ({ onReset }) => {
               onChange={handleSelect}
               options={categoryList}
             />
-            <LabeledSelect
+            {/* <LabeledSelect
               name={"difficulty"}
               label={"Difficulty"}
               value={value.difficulty}
@@ -98,7 +98,7 @@ const FormPage = ({ onReset }) => {
                 { label: "20", value: "20" },
                 { label: "30", value: "30" },
               ]}
-            />
+            /> */}
             <div className={styles.buttonContainer}>
               <Button
                 onClick={handleReset}
