@@ -3,7 +3,15 @@
   cursor: pointer;
   top: 30%;
   right: 0;
-  /* z-index: -1; */
-  /* height: 15px; */
   width: 15px;
+}
+
+.path {
+  transition: cubic-bezier(0, 0, 0.2, 1) 0.2s;
+}
+
+.pointUp {
+  d: path(
+    "M0.999998 41.5L44.5 1.5L88 41.5C88.2328 46.9357 86.7949 48.456 81.5 48.5L44.5 13.5L7.5 48.5C2.2051 48.4559 0.767212 46.9356 0.999998 41.5Z"
+  );
 }

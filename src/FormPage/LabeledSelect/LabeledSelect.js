@@ -28,6 +28,7 @@ const LabeledSelect = ({ name, label, value, onChange, options }) => {
           </li>
         ))}
       </ul>
+      <Arrow isOpen={isOpen} />
     </label>
     // <label className={styles.container}>
     //   {getPlaceHolder()}
